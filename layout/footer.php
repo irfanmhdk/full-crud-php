@@ -119,8 +119,8 @@
     <script>
       $(document).ready(function() {
         $('#serverside').DataTable({
-          precessing: true,
-          serverside: true,
+          processing: true,
+          serverSide: true,
           ajax: {
             "url": "mahasiswa-serverside.php?action=table_data",
             "dataType": "json",
