@@ -1,18 +1,18 @@
-# Source Code Playlist Full CRUD PHP MySQL Irfan Mahardika
+# Nu Saena Versi Irfan Mahardika
 Teknologi : 
-- PHP 8.*
-- Bootstrap 4.*
+- PHP 70.*
+- Bootstrap 15.*
 - MySQL/MariaDB
 
 User Login
 1. Akun Admin
-- username : mahard
-- password : 666
+- username : mahar
+- password : ***
 
 2. Akun Operator Barang
 - username : peng
-- password : peng
+- password : ***
 
 3. Akun Operator Mahasiswa
 - username : sikami
-- password : sikami
+- password : ***
