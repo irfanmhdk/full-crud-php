@@ -33,7 +33,7 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
                 <div class="col-12">
                     <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Pegawai</h3>
+                        <h3 class="card-title"><i class="fas fa-users"></i> Data Pegawai</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

@@ -73,7 +73,7 @@ if(isset($_POST['hapus'])){
                 <div class="col-12">
                     <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Akun</h3>
+                        <h3 class="card-title"><i class="fas fa-user"></i> Data Akun</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

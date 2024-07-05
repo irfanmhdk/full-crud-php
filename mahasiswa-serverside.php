@@ -44,7 +44,7 @@ if($_GET['action'] == "table_data") {
             $nestedData['telepon'] = $value['telepon'];
 
             $nestedData['aksi'] = '<div class="text-center" width="20%">
-                                    <a href="detail-mahasiswa.php?id_mahasiswa='. $value['id_mahasiswa'] .'" class="btn btn-secondary btn-sm"><i class="fas fa-view"></i> Detail</a>
+                                    <a href="detail-mahasiswa.php?id_mahasiswa='. $value['id_mahasiswa'] .'" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i> Detail</a>
                                     <a href="ubah-mahasiswa.php?id_mahasiswa='. $value['id_mahasiswa'] .'" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="hapus-mahasiswa.php?id_mahasiswa='. $value['id_mahasiswa'] .'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin Data Mahasiswa Akan Dihapus?\');"><i class="fas fa-trash"></i> Hapus</a>
                                     </div>';
