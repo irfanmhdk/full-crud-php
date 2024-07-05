@@ -93,12 +93,18 @@ if(isset($_POST['login'])){
       <label for="floatingPassword">Password</label>
     </div>
 
+    <div class="mb-3">
+      <div class="g-recaptcha" data-sitkey="6LcOKggqAAAAAObstCdk-Qnyd9mzwXrb5xyoGXeL"></div>
+    </div>
+
     <button name="login" class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
     <p class="mt-5 mb-3 text-muted">&copy; by Irfan Mahardika 2006–2024</p>
   </form>
 </main>
 
-
-    
+      <script src="access-template/plugins/jquery/jquery.min.js"></script>
+      <script src="access-template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="access-template/dist/js/adminlte.min.js"></script>
+      <script src="https://www.google.com/recaptcha/api.js"></script>
   </body>
 </html>

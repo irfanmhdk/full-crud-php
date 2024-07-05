@@ -34,6 +34,9 @@ include 'config/app.php';
   <link rel="stylesheet" href="access-template/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="access-template/plugins/summernote/summernote-bs4.min.css">
+
+  <!-- jQuery -->
+<script src="access-template/plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -247,6 +250,25 @@ include 'config/app.php';
                 </a>
             </li>
             <?php endif; ?>
+
+            <li class="nav-item">
+                <a href="pegawai.php" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        Data Pegawai
+                    </p>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="email.php" class="nav-link">
+                    <i class="nav-icon fas fa-envelope"></i>
+                    <p>
+                        Kirim Email (PHPMailer)
+                    </p>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a href="crud-modal.php" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
@@ -255,6 +277,7 @@ include 'config/app.php';
                     </p>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a href="logout.php" class="nav-link" onclick="return confirm('Yakin ingin keluar?')">
                     <i class="nav-icon fas fa-sign-out-alt"></i>

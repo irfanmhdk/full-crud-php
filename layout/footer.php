@@ -67,8 +67,8 @@
         CKEDITOR.replace('alamat', {
             filebrowserBrowseUrl: 'assets/ckfinder/ckfinder.html',
             filebrowserUploadUrl: 'assets/ckfinder/core/connentor/php/connection.php?command=QuickUploadtype=files',
-            height: '400px';
-        })
+            height: '400px'
+        });
     </script>
 
     <script>
@@ -110,6 +110,34 @@
         "responsive": true,
         });
     });
+    </script>
+
+    <script>
+      $(function() {
+        $('#example2').DataTable();
+      });
+    </script>
+
+    <script>
+      $(document).ready(function() {
+        $('#serverside').DataTable({
+          precessing: true,
+          serverside: true,
+          ajax: {
+            "url": "mahasiswa-serverside.php?action=table_data",
+            "dataType": "json",
+            "type": "POST"
+          },
+          columns: [
+            {"data": "no"},
+            {"data": "nama"},
+            {"data": "prodi"},
+            {"data": "jk"},
+            {"data": "telepon"},
+            {"data": "aksi"}
+          ]
+        });
+      });
     </script>
 </body>
 </html>
