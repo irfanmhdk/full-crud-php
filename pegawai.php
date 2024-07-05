@@ -37,12 +37,6 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <a href="tambah-pegawai.php" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Tambah</a>
-
-                        <a href="download-excel-pegawai.php" class="btn btn-success mb-1"><i class="fas fa-file-excel"></i> Download Excel</a>
-
-                        <a href="download-pdf-pegawai.php" class="btn btn-danger mb-1"><i class="fas fa-file-pdf"></i> Download PDF</a>
-
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -52,7 +46,6 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
                                     <th>Email</th>
                                     <th>Telepon</th>
                                     <th>Alamat</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody id="live_data">

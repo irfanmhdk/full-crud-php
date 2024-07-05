@@ -103,7 +103,7 @@ if(isset($_POST['ubah'])){
             </form>
             </div>
     </section>
-</div>
+</div><br><br>
 
 <!-- preview image -->
 <script>

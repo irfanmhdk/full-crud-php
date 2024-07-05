@@ -1,23 +1,26 @@
-<?php
-
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
 $mail = new PHPMailer(true);
+
 $mail->SMTPDebug = 2;
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'user@example.com';
-$mail->Password = 'secret';
+$mail->Username = 'irfanmhdk141@gmail.com';
+$mail->Password = 'fjesse1416';
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->Port = 465;
 
 if (isset($_POST['kirim'])){
     $mail->setFrom('irfanmhdk141@gmail.com', 'Irfan Mahardika');
     $mail->addAddress($_POST['email_penerima']);
-    $mail-> addReplyTo('irfanmhdk141@gmail.com', 'Tutorial Irfan Mahardika');
+    $mail->addReplyTo('irfanmhdk141@gmail.com', 'Tutorial Irfan Mahardika');
+
+    $mail->Subject = $_POST['subject'];
+    $mail->Body = $_POST['pesan'];
 
     if($mail->send()){
             echo "<script>
@@ -30,5 +33,5 @@ if (isset($_POST['kirim'])){
                     document.location.href = 'email.php';
                     </script>";
         }
+        exit();
 }
-?>

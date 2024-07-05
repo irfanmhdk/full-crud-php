@@ -28,8 +28,10 @@ if($_GET['action'] == "table_data") {
         $query = $db->query("SELECT id_mahasiswa,nama,prodi,jk,telepon FROM mahasiswa ORDER BY $order $dir LIMIT $limit OFFSET $start");
     } else {
         $search = $_POST['search']['value'];
-        $query = $db->query("SELECT id_mahasiswa,nama.prodi,jk,telepon FROM mahasiswa WHERE nama LIKE '%$search%'");
+        $query = $db->query("SELECT id_mahasiswa,nama,prodi,jk,telepon FROM mahasiswa WHERE nama LIKE '%$search%' OR telepon LIKE '%$search%' ORDER BY $order $dir LIMIT $limit OFFSET $start");
 
+        $querycount = $db->query("SELECT count(id_mahasiswa,nama,prodi,jk,telepon FROM mahasiswa WHERE nama LIKE ,%$search%' OR telepon LIKE '%$search%'");
+        
         $datacount = $querycount->fetch_array();
         $totalFiltered = $datacount['jumlah'];
     }

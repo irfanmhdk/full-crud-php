@@ -68,8 +68,8 @@ $writer = new Xlsx($spreadsheet);
 $writer->save('Laporan Data Mahasiswa.xlsx');
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheet.sheet');
 header('Content-Disposition: attachment;filename="Laporan Data Mahasiswa.xlsx"');
-readfile('Laporan Data Mahasiswa');
-unlink('Laporan Data Mahasiswa');
+readfile('Laporan Data Mahasiswa.xlsx');
+unlink('Laporan Data Mahasiswa.xlsx');
 exit;
 
 ?>

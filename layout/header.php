@@ -36,7 +36,7 @@ include 'config/app.php';
   <link rel="stylesheet" href="access-template/plugins/summernote/summernote-bs4.min.css">
 
   <!-- jQuery -->
-<script src="access-template/plugins/jquery/jquery.min.js"></script>
+  <script src="access-template/plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -251,6 +251,7 @@ include 'config/app.php';
             </li>
             <?php endif; ?>
 
+            <?php if($_SESSION['level'] == 1) : ?>
             <li class="nav-item">
                 <a href="pegawai.php" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
@@ -259,6 +260,7 @@ include 'config/app.php';
                     </p>
                 </a>
             </li>
+            <?php endif; ?>
             
             <li class="nav-item">
                 <a href="email.php" class="nav-link">
