@@ -9,7 +9,7 @@ if(!isset($_SESSION["login"])){
         </script>";
         exit;
 }
-
+//
 $title = 'Tambah Barang';
 
 include 'layout/header.php'; 
