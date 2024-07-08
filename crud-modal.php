@@ -159,9 +159,8 @@ if(isset($_POST['hapus'])){
                     <select name="level" id="level" class="form-control" required>
                         <option value="">-- Pilih Level --</option>
                         <option value="1">Admin</option>
-                        <option value="2">Operator</option>
-                        <option value="3">Operator Barang</option>
-                        <option value="4">Operator mahasiswa</option>
+                        <option value="2">Operator Barang</option>
+                        <option value="3">Operator mahasiswa</option>
                     </select>
                 </div>
             </div>

@@ -95,7 +95,8 @@ include 'config/app.php';
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="access-template/dist/img/elda.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="access-template/dist/img/elda.jpg" alt="
+              User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Elda Rahma Dani
@@ -187,7 +188,7 @@ include 'config/app.php';
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="index.php" class="brand-link">
       <img src="access-template/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Astro</span>
     </a>
@@ -251,7 +252,7 @@ include 'config/app.php';
             </li>
             <?php endif; ?>
 
-            <?php if($_SESSION['level'] == 1) : ?>
+            <?php if($_SESSION['level'] == 1 || $_SESSION['level'] == 4 || $_SESSION['level'] == 5 || $_SESSION['level'] == 6) : ?>
             <li class="nav-item">
                 <a href="pegawai.php" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>

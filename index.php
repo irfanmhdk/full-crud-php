@@ -14,7 +14,43 @@ $title = 'Daftar Barang';
 
 include 'layout/header.php'; 
 
-$data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
+if($_SESSION['level'] == 1){
+  $level = "Admin";
+}elseif($_SESSION['level'] == 1){
+  $level = "Admin";
+}elseif($_SESSION['level'] == 2){
+  $level = "Operator Barang";
+}elseif($_SESSION['level'] == 3){
+  $level = "Operator Mahasiswa";
+}elseif($_SESSION['level'] == 4){
+  $level = "CEO";
+}elseif($_SESSION['level'] == 5){
+  $level = "CTO";
+}elseif($_SESSION['level'] == 6){
+  $level = "Direktur";
+}else{
+
+}
+
+// Data Barang
+$querycount = $db->query("SELECT count(id_barang) as jumlah FROM barang");
+$datacount = $querycount->fetch_array();
+$barang = $datacount['jumlah'];
+
+// Data Mahasiswa
+$querycount = $db->query("SELECT count(id_mahasiswa) as jumlah FROM mahasiswa");
+$datacount = $querycount->fetch_array();
+$mahasiswa = $datacount['jumlah'];
+
+// Data Pegawai
+$querycount = $db->query("SELECT count(id_pegawai) as jumlah FROM pegawai");
+$datacount = $querycount->fetch_array();
+$pegawai = $datacount['jumlah'];
+
+// Data Akun
+$querycount = $db->query("SELECT count(id_akun) as jumlah FROM akun");
+$datacount = $querycount->fetch_array();
+$akun = $datacount['jumlah'];
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -24,12 +60,11 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0"><i class="fas fa-home"></i> Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active"><?= $level ?></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -46,14 +81,14 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3><?= $barang ?></h3>
 
-                <p>New Orders</p>
+                <p>Data Barang</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fas fa-box"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="barang.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -61,14 +96,14 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3><?= $mahasiswa ?></h3>
 
-                <p>Bounce Rate</p>
+                <p>Data Mahasiswa</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fas fa-user-graduate"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="mahasiswa.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -76,14 +111,14 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3><?= $pegawai ?></h3>
 
-                <p>User Registrations</p>
+                <p>Data Pegawai</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="pegawai.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -91,14 +126,14 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?= $akun ?></h3>
 
-                <p>Unique Visitors</p>
+                <p>Data Akun</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fas fa-user"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="crud-modal.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -376,9 +411,9 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
                       <label for="todoCheck1"></label>
                     </div>
                     <!-- todo text -->
-                    <span class="text">Design a nice theme</span>
+                    <span class="text">CRUD PHP</span>
                     <!-- Emphasis label -->
-                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                    <small class="badge badge-danger"><i class="far fa-clock"></i> 1 minggu</small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
                       <i class="fas fa-edit"></i>
@@ -394,8 +429,8 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
                       <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
                       <label for="todoCheck2"></label>
                     </div>
-                    <span class="text">Make the theme responsive</span>
-                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                    <span class="text">Cara Optimasi Website</span>
+                    <small class="badge badge-info"><i class="far fa-clock"></i> 1 minggu</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -410,8 +445,8 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
                       <input type="checkbox" value="" name="todo3" id="todoCheck3">
                       <label for="todoCheck3"></label>
                     </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                    <span class="text">Cara Integrasi Template</span>
+                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 minggu</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -426,8 +461,8 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
                       <input type="checkbox" value="" name="todo4" id="todoCheck4">
                       <label for="todoCheck4"></label>
                     </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                    <span class="text">Membuat Realtime Data</span>
+                    <small class="badge badge-success"><i class="far fa-clock"></i> 1 minggu</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -442,8 +477,8 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
                       <input type="checkbox" value="" name="todo5" id="todoCheck5">
                       <label for="todoCheck5"></label>
                     </div>
-                    <span class="text">Check your messages and notifications</span>
-                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                    <span class="text">Data Table Serverside</span>
+                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 mingggu</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -458,8 +493,8 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang ASC");
                       <input type="checkbox" value="" name="todo6" id="todoCheck6">
                       <label for="todoCheck6"></label>
                     </div>
-                    <span class="text">Let theme shine like a star</span>
-                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                    <span class="text">Cara Kirim Email</span>
+                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 minggu</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
