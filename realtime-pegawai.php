@@ -7,7 +7,7 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
 ?>
 
 <?php $no = 1; ?>
-<?php foreach($data_pegawai as $pegawai) : ?>
+<?php foreach ($data_pegawai as $pegawai) : ?>
     <tr>
         <td><?= $no++ ?></td>
         <td><?= $pegawai['nama'] ?></td>

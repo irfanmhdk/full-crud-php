@@ -4,128 +4,131 @@ session_start();
 
 include 'config/app.php';
 
-if(isset($_POST['login'])){
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
+if (isset($_POST['login'])) {
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    $secret_key = "6Lcx0wgqAAAAAASHJBHBQvaYJw1-xcO-W7Ca8V2c";
+  $secret_key = "6Lcx0wgqAAAAAASHJBHBQvaYJw1-xcO-W7Ca8V2c";
 
-    $verifikasi = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret_key.'&response='. $_POST['g-recaptcha-response']);
+  $verifikasi = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $_POST['g-recaptcha-response']);
 
-    $response = json_decode($verifikasi);
+  $response = json_decode($verifikasi);
 
-    if ($response->success){
-        $result = mysqli_query($db, "SELECT * FROM akun WHERE username = '$username'");
+  if ($response->success) {
+    $result = mysqli_query($db, "SELECT * FROM akun WHERE username = '$username'");
 
-        if(mysqli_num_rows($result) == 1){
-            $hasil = mysqli_fetch_assoc($result);
-            $pw = $hasil['password'];
+    if (mysqli_num_rows($result) == 1) {
+      $hasil = mysqli_fetch_assoc($result);
+      $pw = $hasil['password'];
 
-            if(password_verify($password, $pw)){
-                $_SESSION['login'] = true;
-                $_SESSION['id_akun'] = $hasil['id_akun'];
-                $_SESSION['nama'] = $hasil['nama'];
-                $_SESSION['username'] = $hasil['username'];
-                $_SESSION['email'] = $hasil['email'];
-                $_SESSION['level'] = $hasil['level'];
+      if (password_verify($password, $pw)) {
+        $_SESSION['login'] = true;
+        $_SESSION['id_akun'] = $hasil['id_akun'];
+        $_SESSION['nama'] = $hasil['nama'];
+        $_SESSION['username'] = $hasil['username'];
+        $_SESSION['email'] = $hasil['email'];
+        $_SESSION['level'] = $hasil['level'];
 
-                header("Location: index.php");
-                exit;
-            }else{
-              $error = true;
-            }
-        }
-    }else{
-      $errorRecaptcha = true;
+        header("Location: index.php");
+        exit;
+      } else {
+        $error = true;
+      }
     }
+  } else {
+    $errorRecaptcha = true;
+  }
 }
 
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
 
-    
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link href="assets/css/signin.css" rel="stylesheet">
-
-    <!-- Favicons -->
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link href="assets/css/signin.css" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+  <meta name="theme-color" content="#7952b3">
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
+    }
+  </style>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    
-<main class="form-signin">
-  <form action="" method="POST">
-    <img class="mb-4" src="access-template/dist/img/AdminLTELogo.png" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
+  <!-- Custom styles for this template -->
+  <link href="signin.css" rel="stylesheet">
+</head>
 
-    <?php if(isset($error)) : ?>
+<body class="text-center">
+
+  <main class="form-signin">
+    <form action="" method="POST">
+      <img class="mb-4" src="access-template/dist/img/AdminLTELogo.png" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+      <?php if (isset($error)) : ?>
         <div class="alert alert-danger text-center">
           <b>Username/Password SALAH</b>
         </div>
-    <?php endif; ?>
+      <?php endif; ?>
 
-    <?php if(isset($error)) : ?>
+      <?php if (isset($error)) : ?>
         <div class="alert alert-danger text-center">
           <b>Recaptcha Tidak Valid</b>
         </div>
-    <?php endif; ?>
+      <?php endif; ?>
 
-    <div class="form-floating">
-      <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Username">
-      <label for="floatingInput">Username</label>
-    </div>
-    <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
+      <div class="form-floating">
+        <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Username">
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating">
+        <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
 
-    <div class="form-floating">
-      <div class="g-recaptcha" data-sitekey="6Lcx0wgqAAAAALgd_bqFgpWS1NBctX03DZEx2KPW"></div>
-    </div>
+      <div class="form-floating">
+        <div class="g-recaptcha" data-sitekey="6Lcx0wgqAAAAALgd_bqFgpWS1NBctX03DZEx2KPW"></div>
+      </div>
 
-    <button name="login" class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-    <p class="mt-5 mb-3 text-muted">&copy; by Irfan Mahardika 2006–2024</p>
-  </form>
-</main>
+      <button name="login" class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+      <p class="mt-5 mb-3 text-muted">&copy; by Irfan Mahardika 2006–2024</p>
+    </form>
+  </main>
 
-      <!-- jQuery -->
-      <script src="access-template/plugins/jquery/jquery.min.js"></script>
-      <!-- Bootstrap 4 -->
-      <script src="access-template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <script src="access-template/dist/js/adminlte.min.js"></script>
-      <script src="https://www.google.com/recaptcha/api.js"></script>
-  </body>
+  <!-- jQuery -->
+  <script src="access-template/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="access-template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="access-template/dist/js/adminlte.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+</body>
+
 </html>

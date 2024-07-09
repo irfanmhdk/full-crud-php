@@ -2,12 +2,12 @@
 
 session_start();
 
-if(!isset($_SESSION["login"])){
+if (!isset($_SESSION["login"])) {
     echo "<script>
             alert('Login dulu');
             document.location.href = 'login.php';
         </script>";
-        exit;
+    exit;
 }
 
 include 'config/app.php';
@@ -15,15 +15,14 @@ include 'config/app.php';
 // menerima id_akun yang dipilih pengguna
 $id_akun = (int)$_GET['id_akun'];
 
-if (delete_akun($id_akun) > 0){
+if (delete_akun($id_akun) > 0) {
     echo "<script>
             alert('Data Akun Berhasil Dihapus');
             document.location.href = 'crud-modal.php';
             </script>";
-}else{
+} else {
     echo "<script>
             alert('Data Akun Gagal Dihapus');
             document.location.href = 'crud-modal.php';
             </script>";
 }
-?>

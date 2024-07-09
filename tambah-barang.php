@@ -1,26 +1,26 @@
-<?php 
+<?php
 
 session_start();
 
-if(!isset($_SESSION["login"])){
+if (!isset($_SESSION["login"])) {
     echo "<script>
             alert('Login dulu');
             document.location.href = 'login.php';
         </script>";
-        exit;
+    exit;
 }
 //
 $title = 'Tambah Barang';
 
-include 'layout/header.php'; 
+include 'layout/header.php';
 
-if(isset($_POST['tambah'])){
-    if (create_barang($_POST) > 0){
+if (isset($_POST['tambah'])) {
+    if (create_barang($_POST) > 0) {
         echo "<script>
                 alert('Data Barang Berhasil Ditambahkan');
                 document.location.href = 'barang.php';
                 </script>";
-    }else{
+    } else {
         echo "<script>
                 alert('Data Barang Gagal Ditambahkan');
                 document.location.href = 'barang.php';
@@ -49,7 +49,7 @@ if(isset($_POST['tambah'])){
                 </div>
                 <input type="submit" name="tambah" class="btn btn-primary" style="float: right;">
             </form>
-            </div>
+        </div>
     </section>
 </div>
 

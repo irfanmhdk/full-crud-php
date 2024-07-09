@@ -2,12 +2,12 @@
 
 session_start();
 
-if(!isset($_SESSION["login"])){
+if (!isset($_SESSION["login"])) {
     echo "<script>
             alert('Login dulu');
             document.location.href = 'login.php';
         </script>";
-        exit;
+    exit;
 }
 
 $_SESSION = [];
@@ -15,4 +15,3 @@ $_SESSION = [];
 session_unset();
 session_destroy();
 header("Location: login.php");
-?>

@@ -1,18 +1,18 @@
-<?php 
+<?php
 
 session_start();
 
-if(!isset($_SESSION["login"])){
+if (!isset($_SESSION["login"])) {
     echo "<script>
             alert('Login dulu');
             document.location.href = 'login.php';
         </script>";
-        exit;
+    exit;
 }
 
 $title = 'Kirim Email';
 
-include 'layout/header.php'; 
+include 'layout/header.php';
 
 require 'vendor/autoload.php';
 
@@ -30,7 +30,7 @@ $mail->Password = 'kzfelcpchoylwivf';
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->Port = 465;
 
-if (isset($_POST['kirim'])){
+if (isset($_POST['kirim'])) {
     $mail->setFrom('irfanmhdk141@gmail.com', 'Mahar');
     $mail->addAddress($_POST['email_penerima']);
     $mail->addReplyTo('irfanmhdk141@gmail.com', 'Mahar');
@@ -38,18 +38,18 @@ if (isset($_POST['kirim'])){
     $mail->Subject = $_POST['subject'];
     $mail->Body = $_POST['pesan'];
 
-    if($mail->send()){
-            echo "<script>
+    if ($mail->send()) {
+        echo "<script>
                     alert('Data Email Berhasil Dikirim');
                     document.location.href = 'email.php';
                     </script>";
-        }else{
-            echo "<script>
+    } else {
+        echo "<script>
                     alert('Data Email Gagal Dikirim');
                     document.location.href = 'email.php';
                     </script>";
-        }
-        exit();
+    }
+    exit();
 }
 ?>
 
@@ -73,7 +73,7 @@ if (isset($_POST['kirim'])){
                 </div>
                 <button type="submit" name="kirim" class="btn btn-primary" style="float: right;">Kirim</button>
             </form>
-            </div>
+        </div>
     </section>
 </div><br><br>
 
