@@ -36,7 +36,7 @@ if (isset($_POST['filter'])){
     $jumlahData = count($got);
     $jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
     $halamanAktif = (isset($_GET['halaman']) ? $_GET['halaman'] : 1);
-    $awalData = ($jumlahDataPerhalaman = $halamanAktif) - $jumlahDataPerhalaman;
+    $awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
 
     $data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC LIMIT $awalData, $jumlahDataPerhalaman");
 }

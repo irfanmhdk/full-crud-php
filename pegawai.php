@@ -22,8 +22,6 @@ $title = 'Daftar Pegawai';
 
 include 'layout/header.php';
 
-$data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
-
 ?>
 
 <div class="content-wrapper">
@@ -49,21 +47,7 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
                                 </tr>
                             </thead>
                             <tbody id="live_data">
-                            <?php $no = 1; ?>
-                                <?php foreach ($data_pegawai as $pegawai) : ?>
-                                <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $pegawai['nama']; ?></td>
-                                    <td><?= $pegawai['prodi']; ?></td>
-                                    <td><?= $pegawai['jk']; ?></td>
-                                    <td><?= $pegawai['telepon']; ?></td>
-                                    <td>
-                                        <a href="detail-pegawai.php?id_pegawai=<?= $pegawai['id_pegawai']; ?>" class="btn btn-secondary btn-sm"><i class="fas fa-view"></i> Detail</a>
-                                        <a href="ubah-pegawai.php?id_pegawai=<?= $pegawai['id_pegawai']; ?>" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                        <a href="hapus-pegawai.php?id_pegawai=<?= $pegawai['id_pegawai']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Data Pegawai Akan Dihapus?');"><i class="fas fa-trash"></i> Hapus</a>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
+                            
                             </tbody>
                         </table>
                     </div>
@@ -81,7 +65,7 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
     <script>
         $('document').ready(function() {
             setInterval(function() {
-                getPegawai()
+                getPegawai();
             }, 200)
         });
 
@@ -91,9 +75,9 @@ $data_pegawai = select("SELECT * FROM pegawai ORDER BY id_pegawai DESC");
                 url: "realtime-pegawai.php",
                 type: "GET",
                 success: function(response) {
-                    $('#live_data').html(response)
+                    $('#live_data').html(response);
                 }
-            })
+            });
         }
     </script>
   
