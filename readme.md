@@ -2,7 +2,7 @@
 Teknologi : 
 - PHP 70.*
 - Bootstrap 15.*
-- MySQL/MariaDB
+- MySQL/BundaMaria
 
 User Login
 1. Akun Admin
@@ -16,3 +16,5 @@ User Login
 3. Akun Operator Mahasiswa
 - username : sikami
 - password : ***
+
+Bikin Sendiri!!!
